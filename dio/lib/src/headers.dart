@@ -23,12 +23,12 @@ class Headers {
   Headers() : _map = <String, List<String>>{};
 
   Headers.fromMap(Map<String, List<String>> map)
-      : _map = map.map((k, v) => MapEntry(k.trim().toLowerCase(), v));
+      : _map = map.map((k, v) => MapEntry(k.trim(), v));
 
   /// Returns the list of values for the header named [name]. If there
   /// is no header with the provided name, [:null:] will be returned.
   List<String> operator [](String name) {
-    return _map[name.trim().toLowerCase()];
+    return _map[name.trim()];
   }
 
   /// Convenience method for the value for a single valued header. If
@@ -54,7 +54,7 @@ class Headers {
   /// Sets a header. The header named [name] will have all its values
   /// cleared before the value [value] is added as its value.
   void set(String name, dynamic value) {
-    name = name.trim().toLowerCase();
+    name = name.trim();
     if (value is List) {
       _map[name] = value.map<String>((e) => e.toString()).toList();
     } else {
